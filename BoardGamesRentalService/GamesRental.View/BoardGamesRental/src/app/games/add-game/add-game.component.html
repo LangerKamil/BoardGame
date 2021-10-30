@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <mat-card id="addGameCard">
+      <mat-card-header>
+        <mat-card-title>Add new Game</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="addGame()">
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Title</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="game.title"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Description</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="game.description"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>In Stock</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="game.inStock"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Price</mat-label>
+            <input
+              matInput
+              type="number"
+              [(ngModel)]="game.price"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+          <div>
+            <button type="submit" mat-raised-button color="primary">Add</button>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="basic" routerLink="/games">
+          Go back
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="returnForm">
+      <form (ngSubmit)="showRentedGames(email)">
+        <mat-form-field class="example-form-field" appearance="outline">
+          <mat-label>Email Address</mat-label>
+          <input
+            matInput
+            type="email"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </mat-form-field>
+
+        <div>
+          <button type="submit" mat-raised-button color="primary">Show</button>
+          <button mat-raised-button color="basic" routerLink="/games">
+            Go back
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-sm-12">
+      <h2>Rented games</h2>
+    </div>
+    <div class="col col-sm-12">
+      <table
+        id="customerGamesTable"
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+        class="table row-border table-hover"
+      >
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>In Stock</th>
+            <th>Price</th>
+            <th>Rent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games">
+            <td>{{ game.title }}</td>
+            <td>{{ game.description }}</td>
+            <td>{{ game.inStock }}</td>
+            <td>{{ game.price }}</td>
+            <td>
+              <button
+                mat-raised-button
+                color="warn"
+                (click)="returnGame(game.id)"
+              >
+                Return
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

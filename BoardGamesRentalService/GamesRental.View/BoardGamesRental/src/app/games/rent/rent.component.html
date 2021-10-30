@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <h2>Game details</h2>
+    <p>Title: <strong>{{game.title}}</strong></p>
+    <p>Description: <strong>{{game.description}}</strong></p>
+    <p>Price: <strong>{{game.price}}</strong></p>
+  </div>
+  <div class="row">
+    <mat-card id="addUserCard">
+      <mat-card-header>
+        <mat-card-title>Your details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (ngSubmit)="rent(this.newCustomer)">
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="newCustomer.firstName"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="newCustomer.lastName"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Email Address</mat-label>
+            <input
+              matInput
+              type="email"
+              [(ngModel)]="newCustomer.emailAddress"
+              [ngModelOptions]="{ standalone: true }"
+            />
+          </mat-form-field>
+
+          <div>
+            <button type="submit" mat-raised-button color="primary">Rent</button>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="basic" routerLink="/games">
+          Go back
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

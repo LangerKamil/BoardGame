@@ -1,0 +1,95 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-sm-12">
+      <h2>Available games</h2>
+    </div>
+    <div class="col col-sm-12">
+      <table id="ediTable"
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+        class="table row-border table-hover"
+      >
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>In Stock</th>
+            <th>Price</th>
+            <th>Manage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games">
+            <td>{{ game.title }}</td>
+            <td>{{ game.description }}</td>
+
+            <td><p *ngIf="checkAvailability(game)">{{ game.inStock }}</p>
+              <p *ngIf="!checkAvailability(game)" class="notAvailable">{{ game.inStock }}</p></td>
+
+            <td>{{ game.price }}</td>
+            <td><button mat-raised-button color="primary"(click)="editor(game)">Edit</button>
+              <button mat-raised-button color="warn" (click)="deleteGame(this.game)">Delete</button></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </div>
+    <div *ngIf="edit" class="col col-sm-12">
+      <mat-card id="addGameCard">
+        <mat-card-header>
+          <mat-card-title>Edit game</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form (ngSubmit)="editGame(game)">
+            <mat-form-field class="example-form-field" appearance="outline">
+              <mat-label>Title</mat-label>
+              <input
+                matInput
+                type="text"
+                [(ngModel)]="game.title"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field" appearance="outline">
+              <mat-label>Description</mat-label>
+              <input
+                matInput
+                type="text"
+                [(ngModel)]="game.description"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field" appearance="outline">
+              <mat-label>In Stock</mat-label>
+              <input
+                matInput
+                type="number"
+                [(ngModel)]="game.inStock"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field" appearance="outline">
+              <mat-label>Price</mat-label>
+              <input
+                matInput
+                type="number"
+                [(ngModel)]="game.price"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+            <div>
+              <button type="submit" mat-raised-button color="primary">Edit</button>
+              <button mat-raised-button color="warn" (click)="editor(game)">Cancel</button>
+            </div>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
