@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+  boardgamesrentalservice:
+    image: ${DOCKER_REGISTRY-}boardgamesrentalservice
+    build:
+      context: .
+      dockerfile: BoardGamesRentalService/Dockerfile
+    ports:
+            - 8080:8080
+    expose:
+            - 8080
+
+  angular-docker:
+    #container_name: angular-docker-container
+    build: 
+      context: .
+      dockerfile: GamesRental.View/Dockerfile
+      
+    ports:
+            - 4200:4200
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
+    environment:
+    #- SA_PASSWORD=Pass@word
+    - ACCEPT_EULA=Y
+    ports:
+    - "1433:1433"
+    build: 
+      context: .
+      dockerfile: GamesRental.Infrastructure/Dockerfile

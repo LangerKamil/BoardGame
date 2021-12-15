@@ -1,0 +1,2 @@
+
+RUN update-database

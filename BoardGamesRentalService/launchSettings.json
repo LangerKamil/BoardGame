@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "angular-docker": "StartWithoutDebugging",
+        "boardgamesrentalservice": "StartWithoutDebugging",
+        "sql-server": "StartWithoutDebugging"
+      }
+    }
+  }
+}

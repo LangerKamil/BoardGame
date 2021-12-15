@@ -1,0 +1,120 @@
+services:
+  angular-docker:
+    build:
+      context: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      dockerfile: GamesRental.View/Dockerfile
+    container_name: angular-docker-container
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 4200
+      published: 4200
+      protocol: tcp
+  boardgamesrentalservice:
+    build:
+      context: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      dockerfile: BoardGamesRentalService/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: BoardGamesRentalService
+      target: base
+    container_name: BoardGamesRentalService_1
+    entrypoint:
+    - C:\remote_debugger\x64\msvsmon.exe
+    - /noauth
+    - /anyuser
+    - /silent
+    - /nostatus
+    - /noclrwarn
+    - /nosecuritywarn
+    - /nofirewallwarn
+    - /nowowwarn
+    - /timeout:2147483646
+    - /LogDebuggeeOutputToStdOut
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: "1"
+      NUGET_FALLBACK_PACKAGES: c:\.nuget\fallbackpackages
+      NUGET_PACKAGES: C:\.nuget\packages
+    expose:
+    - "8080"
+    image: boardgamesrentalservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath c:\.nuget\packages
+        --additionalProbingPath c:\.nuget\fallbackpackages  "C:\app\bin\Debug\net5.0\BoardGamesRentalService.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: C:\remote_debugger\x64\utils\KillProcess.exe
+        dotnet.exe
+      com.microsoft.visualstudio.debuggee.program: '"C:\Program Files\dotnet\dotnet.exe"'
+      com.microsoft.visualstudio.debuggee.workingdirectory: C:\app
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      protocol: tcp
+    - mode: ingress
+      target: 443
+      protocol: tcp
+    - mode: ingress
+      target: 8080
+      published: 8080
+      protocol: tcp
+    volumes:
+    - type: bind
+      source: C:\Users\Env3lope\AppData\Roaming/ASP.NET/Https
+      target: /root/.aspnet/https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\AppData\Roaming/Microsoft/UserSecrets
+      target: /root/.microsoft/usersecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\AppData\Roaming/ASP.NET/Https
+      target: C:\Users\ContainerUser\AppData\Roaming\ASP.NET\Https
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\AppData\Roaming/Microsoft/UserSecrets
+      target: C:\Users\ContainerUser\AppData\Roaming\Microsoft\UserSecrets
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService
+      target: C:\app
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\onecoremsvsmon\17.1.1224.0
+      target: C:\remote_debugger
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      target: C:\src
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages
+      target: c:\.nuget\fallbackpackages
+      read_only: true
+      bind:
+        create_host_path: true
+    - type: bind
+      source: C:\Users\Env3lope\.nuget\packages\
+      target: c:\.nuget\packages
+      read_only: true
+      bind:
+        create_host_path: true
+networks:
+  default:
+    name: dockercompose11899703491317301348_default

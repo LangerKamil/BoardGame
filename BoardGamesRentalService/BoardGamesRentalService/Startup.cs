@@ -26,7 +26,7 @@ namespace BoardGamesRentalService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddDbContext<GamesStoreContext>(opt => opt.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=GamesStore;Integrated Security=True"));
+            services.AddDbContext<GamesStoreContext>(opt => opt.UseSqlServer("Data Source=localhost;Initial Catalog=GamesStore;Integrated Security=True"));
             services.AddTransient<GamesStoreContext>();
             services.AddMediatR(typeof(GamesRentalMediatorEntryPoint).Assembly);
             services.AddTransient<ICustomerRepository, CustomerRepository>();
