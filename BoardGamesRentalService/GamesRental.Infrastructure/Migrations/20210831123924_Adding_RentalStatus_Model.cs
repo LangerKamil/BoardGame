@@ -53,6 +53,7 @@ namespace GamesRental.Infrastructure.Migrations
                 principalTable: "RentalStatuses",
                 principalColumn: "id",
                 onDelete: ReferentialAction.Cascade);
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

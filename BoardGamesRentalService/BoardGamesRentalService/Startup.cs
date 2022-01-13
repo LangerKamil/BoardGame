@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using System;
 
 namespace BoardGamesRentalService
 {
@@ -26,7 +28,7 @@ namespace BoardGamesRentalService
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddDbContext<GamesStoreContext>(opt => opt.UseSqlServer("Data Source=localhost;Initial Catalog=GamesStore;Integrated Security=True"));
+            services.AddDbContext<GamesStoreContext>(opt => opt.UseSqlServer("Server=localhost;Database=GamesStore;MultipleActiveResultSets=true"));
             services.AddTransient<GamesStoreContext>();
             services.AddMediatR(typeof(GamesRentalMediatorEntryPoint).Assembly);
             services.AddTransient<ICustomerRepository, CustomerRepository>();
@@ -34,6 +36,7 @@ namespace BoardGamesRentalService
             services.AddTransient<IRentalRepository, RentalRepository>();
             services.AddTransient<IEmailRepository, EmailRepository>();
             services.AddControllers();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "BoardGamesRentalService", Version = "v1" });
@@ -41,8 +44,9 @@ namespace BoardGamesRentalService
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, GamesStoreContext gamesStoreContext)
         {
+
             app.UseCors(
                 options => options
                 .AllowAnyOrigin()
@@ -70,6 +74,7 @@ namespace BoardGamesRentalService
                 endpoints.MapControllers();
             });
 
+            gamesStoreContext.Database.Migrate();
         }
     }
 }

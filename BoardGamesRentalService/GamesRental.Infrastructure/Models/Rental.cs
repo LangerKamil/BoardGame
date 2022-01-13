@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace GamesRental.Infrastructure.Models
 {
@@ -19,11 +17,12 @@ namespace GamesRental.Infrastructure.Models
         public DateTime RentalDate { get; set; }
         public DateTime ReturnDate { get; set; }
 
-        public TimeSpan Difference { get
+        public TimeSpan Difference
+        {
+            get
             {
-                
                 return DateTime.Now.Subtract(RentalDate);
-            } }
-
+            }
+        }
     }
 }

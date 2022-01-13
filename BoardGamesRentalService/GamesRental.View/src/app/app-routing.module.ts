@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RentedGamesComponent } from './customer/rented-games/rented-games.component';
-import { AddGameComponent } from './Pages/staff/add-game-page/add-game.component';
+import { RentedGamesComponent } from './Pages/customer-page/rented-games/rented-games.component';
+import { AddGameComponent } from './Pages/service-page/add-game-page/add-game.component';
 import { GamesComponent } from './Pages/games-page/games-page.component';
-import { ManagerComponent } from './Pages/staff/manage-games-page/manager.component';
+import { ManagerComponent } from './Pages/service-page/manage-games-page/manager.component';
 import { RentComponent } from './Pages/games-page/rent/rent.component';
 import { HomeComponent } from './Pages/home-page/home-page.component';
 

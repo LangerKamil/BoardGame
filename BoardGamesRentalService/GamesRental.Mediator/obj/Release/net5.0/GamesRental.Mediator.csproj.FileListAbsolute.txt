@@ -1,0 +1,15 @@
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\bin\Release\net5.0\GamesRental.Mediator.deps.json
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\bin\Release\net5.0\GamesRental.Mediator.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\bin\Release\net5.0\ref\GamesRental.Mediator.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\bin\Release\net5.0\GamesRental.Mediator.pdb
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\bin\Release\net5.0\GamesRental.Infrastructure.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\bin\Release\net5.0\GamesRental.Infrastructure.pdb
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.csproj.AssemblyReference.cache
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.AssemblyInfoInputs.cache
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.AssemblyInfo.cs
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.csproj.CoreCompileInputs.cache
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.csproj.CopyComplete
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\ref\GamesRental.Mediator.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\GamesRental.Mediator\obj\Release\net5.0\GamesRental.Mediator.pdb

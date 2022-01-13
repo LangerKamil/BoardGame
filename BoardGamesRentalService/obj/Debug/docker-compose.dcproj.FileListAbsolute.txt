@@ -26,3 +26,9 @@ C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\Games
 C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\AutoMapper.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\Microsoft.Extensions.Options.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll

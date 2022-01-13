@@ -15,23 +15,25 @@ export class GamesService {
 
   constructor(private httpClient: HttpClient) { }
 
+  port: string = '44360';
+
   getGames():Observable<Game[]>{
-    return this.httpClient.get<Game[]>('https://localhost:44370/game/get');
+    return this.httpClient.get<Game[]>(`https://localhost:${this.port}/game/get`);
   }
 
   getGameByTitle(title:string):Observable<Game>{
-    return this.httpClient.get<Game>(`https://localhost:44370/game/get/singleByTitle/${title}`);
+    return this.httpClient.get<Game>(`https://localhost:${this.port}/game/get/singleByTitle/${title}`);
   }
 
   addGame(game:Game){
-    return this.httpClient.post(`https://localhost:44370/game/add/${game.title}/${game.description}/${game.inStock}/${game.price}`,{headers:headers});
+    return this.httpClient.post(`https://localhost:${this.port}/game/add/${game.title}/${game.description}/${game.inStock}/${game.price}`,{headers:headers});
   }
 
   deleteGame(game:Game){
-    return this.httpClient.delete(`https://localhost:44370/game/delete/${game.id}`,{headers: headers})
+    return this.httpClient.delete(`https://localhost:${this.port}/game/delete/${game.id}`,{headers: headers})
   }
 
   editGame(game:Game){
-    return this.httpClient.put(`https://localhost:44370/game/edit/${game.id}/${game.title}/${game.description}/${game.inStock}/${game.price}`,{headers:headers})
+    return this.httpClient.put(`https://localhost:${this.port}/game/edit/${game.id}/${game.title}/${game.description}/${game.inStock}/${game.price}`,{headers:headers})
   }
 }

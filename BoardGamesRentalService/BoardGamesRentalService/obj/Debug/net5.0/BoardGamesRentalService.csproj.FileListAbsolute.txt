@@ -131,3 +131,9 @@ C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRenta
 C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\obj\Debug\net5.0\BoardGamesRentalService.pdb
 C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\obj\Debug\net5.0\BoardGamesRentalService.genruntimeconfig.cache
 C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\obj\Debug\net5.0\BoardGamesRentalService.csproj.AssemblyReference.cache
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll

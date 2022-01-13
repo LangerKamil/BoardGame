@@ -1,11 +1,13 @@
+<app-games-list></app-games-list>
+
 <div class="container">
   <div class="row">
     <div class="col col-sm-12">
-      <h2>Available games</h2>
+      <h2>Blacklist</h2>
     </div>
     <div class="col col-sm-12">
       <table
-        id="customerTable"
+        id="blacklistTable"
         datatable
         [dtOptions]="dtOptions"
         [dtTrigger]="dtTrigger"
@@ -14,69 +16,24 @@
         <thead>
           <tr>
             <th>Title</th>
-            <th>Description</th>
-            <th>In Stock</th>
-            <th>Price</th>
-            <th>Rent</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Rented for</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let game of games">
-            <td>{{ game.title }}</td>
-            <td>{{ game.description }}</td>
-            <td >
-              <p *ngIf="checkAvailability(game)">{{ game.inStock }}</p>
-              <p *ngIf="!checkAvailability(game)" class="notAvailable">{{ game.inStock }}</p></td>
-            <td>{{ game.price }}</td>
+          <tr *ngFor="let item of blacklisted">
+            <td>{{ item.game.title }}</td>
+            <td>{{ item.customer.firstName }}</td>
+            <td>{{ item.customer.lastName }}</td>
             <td>
-              <button *ngIf="checkAvailability(game)"
-                mat-raised-button
-                color="primary"
-                routerLink="/rent"
-                [queryParams]="{ id: game.id,title:game.title}"
-              >
-                Rent
-              </button>
-              <p *ngIf="!checkAvailability(game)" class="notAvailable">Not available</p>
+              <p class="late">{{ item.difference.minutes }} minutes</p>
             </td>
           </tr>
         </tbody>
       </table>
+      <button (click)="sendEmails()">Send Emails</button>
     </div>
-  </div>
-
-<div class="row noReturnRow">
-  <div class="col col-sm-12">
-    <h2>Blacklist</h2>
-  </div>
-  <div class="col col-sm-12">
-    <table
-      id="blacklistTable"
-      datatable
-      [dtOptions]="dtOptions"
-      [dtTrigger]="dtTrigger"
-      class="table row-border table-hover"
-    >
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Rented for</th>
-
-        </tr>
-      </thead>
-      <tbody >
-        <tr *ngFor="let item of blacklisted">
-          <td>{{ item.game.title }}</td>
-          <td>{{ item.customer.firstName }}</td>
-          <td>{{ item.customer.lastName }}</td>
-          <td><p class="late">{{ item.difference.minutes }} minutes</p></td>
-
-        </tr>
-      </tbody>
-    </table>
-    <button (click)="sendEmails()">Send Emails</button>
   </div>
 </div>
 

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "WuX144cj1jKGceF9soiw9UANSp3MrEehT/Q0kTCquRth0+WYJ7VvdL8yeSXui6/Pau5jyqhxTSUWmSjTbFHGTQ==",
+  "dgSpecHash": "kfXj0xdRVqP1I1bCu+yEORGd+rbylk0tHgXLAmhWa4HXbtcpKoACsbBaOvNx5LvxhVPTjtr55TVwMtCbW8e+Cg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Env3lope\\source\\repos\\BoardGame\\BoardGamesRentalService\\GamesRental.Mediator\\GamesRental.Mediator.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Env3lope\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
     "C:\\Users\\Env3lope\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
-    "C:\\Users\\Env3lope\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Env3lope\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Env3lope\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\Env3lope\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
     "C:\\Users\\Env3lope\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.9\\microsoft.entityframeworkcore.5.0.9.nupkg.sha512",

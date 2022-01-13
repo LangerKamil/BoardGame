@@ -7,25 +7,35 @@ services:
       context: .
       dockerfile: BoardGamesRentalService/Dockerfile
     ports:
-            - 8080:8080
+            - 80
+            - 443
+            - 44360:443
     expose:
-            - 8080
-
-  angular-docker:
+            - 443
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_HTTPS_PORT=44360
+    
+  web:
     #container_name: angular-docker-container
     build: 
       context: .
       dockerfile: GamesRental.View/Dockerfile
       
     ports:
-            - 4200:4200
+            - "4200:4200"
+            #- "4200:443"
   sql-server:
     image: mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
     environment:
     #- SA_PASSWORD=Pass@word
-    - ACCEPT_EULA=Y
+    - ACCEPT_EULA="Y"
     ports:
     - "1433:1433"
-    build: 
-      context: .
-      dockerfile: GamesRental.Infrastructure/Dockerfile
+    #depends_on: 
+    #  - migrations
+  #migrations:
+  #  build: 
+  #    context: .
+  #    dockerfile: BoardGamesRentalService/InfrastructureDocker/Dockerfile

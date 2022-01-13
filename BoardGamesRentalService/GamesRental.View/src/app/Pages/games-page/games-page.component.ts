@@ -15,34 +15,21 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class GamesComponent implements OnInit {
 
-  dtOptions: DataTables.Settings = {};
-
-  games = Games;
-  customers = Customers;
   blacklistAddresses: string[] = [];
   blacklisted: any[] = [];
-
+  dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject<any>();
 
-  constructor(private service: GamesService, private rentService: RentalService,
+  constructor(private rentService: RentalService,
     private emailService: EmailService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.getGames();
     this.getBlacklisted();
-    this.renderGamesTable();
     this.renderBlacklistTable();
   }
 
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
-  }
-  getGames(): void {
-
-    this.service.getGames().subscribe(response => {
-      this.games = response;
-      this.dtTrigger.next();
-    })
   }
 
   getBlacklisted() {
@@ -50,17 +37,6 @@ export class GamesComponent implements OnInit {
       this.blacklisted = response;
     })
 
-  }
-
-  renderGamesTable() {
-    $('#customerTable').DataTable().clear().destroy();
-    this.dtOptions = {
-      pagingType: 'full_numbers',
-      pageLength: 5,
-      search: {
-        caseInsensitive: true
-      }
-    };
   }
 
   renderBlacklistTable() {
@@ -74,11 +50,6 @@ export class GamesComponent implements OnInit {
         caseInsensitive: true
       }
     };
-  }
-
-  checkAvailability(game: Game): boolean {
-    if (game.inStock === 0) return false;
-    else return true;
   }
 
   sendEmails() {

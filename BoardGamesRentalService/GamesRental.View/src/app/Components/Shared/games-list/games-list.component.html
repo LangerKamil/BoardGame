@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-sm-12">
+      <h2>Available games</h2>
+    </div>
+    <div class="col col-sm-12">
+      <table
+        id="customerTable"
+        datatable
+        [dtOptions]="dtOptions"
+        [dtTrigger]="dtTrigger"
+        class="table row-border table-hover"
+      >
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>In Stock</th>
+            <th>Price</th>
+            <th>Rent</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let game of games">
+            <td>{{ game.title }}</td>
+            <td>{{ game.description }}</td>
+            <td >
+              <p *ngIf="checkAvailability(game)">{{ game.inStock }}</p>
+              <p *ngIf="!checkAvailability(game)" class="notAvailable">{{ game.inStock }}</p></td>
+            <td>{{ game.price }}</td>
+            <td>
+              <button *ngIf="checkAvailability(game)"
+                mat-raised-button
+                color="primary"
+                routerLink="/rent"
+                [queryParams]="{ id: game.id,title:game.title}"
+              >
+                Rent
+              </button>
+              <p *ngIf="!checkAvailability(game)" class="notAvailable">Not available</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

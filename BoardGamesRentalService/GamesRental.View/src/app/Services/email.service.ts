@@ -12,7 +12,9 @@ export class EmailService {
 
   constructor(private httpClient: HttpClient) { }
 
+  port: string = '44360';
+
   sendEmail(addresses:string){
-    return this.httpClient.post(`https://localhost:44370/email/send/${addresses}`,{headers:headers});
+    return this.httpClient.post(`https://localhost:${this.port}/email/send/${addresses}`,{headers:headers});
   }
 }

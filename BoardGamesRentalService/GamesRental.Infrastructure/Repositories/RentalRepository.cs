@@ -1,4 +1,6 @@
-﻿using GamesRental.Infrastructure.Models;
+﻿using AutoMapper;
+using GamesRental.Infrastructure.DTOs;
+using GamesRental.Infrastructure.Models;
 using GamesRental.Infrastructure.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,15 +13,16 @@ namespace GamesRental.Infrastructure.Repositories
     {
         GamesStoreContext _dbContext;
         ICustomerRepository _customerRepository;
-        public RentalRepository(GamesStoreContext dbContext,ICustomerRepository customerRepository)
+        IMapper _mapper;
+        public RentalRepository(GamesStoreContext dbContext,ICustomerRepository customerRepository, IMapper mapper)
         {
             _dbContext = dbContext;
             _customerRepository = customerRepository;
+            _mapper = mapper;
         }
         public List<Rental> Get(int id)
         {
             return _dbContext.Rentals.Include(c => c.Customer).Where(c => c.CustomerId == id).Include(g => g.Game).Include(r => r.RentalStatus).ToList();
-
         }
 
         public List<Rental> GetBlacklisted()
@@ -44,32 +47,30 @@ namespace GamesRental.Infrastructure.Repositories
 
             var userGames = gamesFromDb.ToList();
 
-
-
             return userGames;
         }
 
         public bool RentGame(int gameId, string firstName, string lastName, string email)
         {
             var customerFromDb = _dbContext.Customers.Where(c => c.FirstName == firstName && c.LastName == lastName && c.EmailAddress == email).FirstOrDefault();
-            if (customerFromDb == null)
+            if (customerFromDb == null) _customerRepository.Insert(firstName, lastName, email);
 
-                _customerRepository.Insert(firstName, lastName, email);
-
-            var returnDate = DateTime.Now;
-            var customer = _dbContext.Customers.Where(c => c.EmailAddress == email).FirstOrDefault();
             var gameFromDb = _dbContext.Games.Where(g => g.Id == gameId).FirstOrDefault();
+            var returnDate = DateTime.Now;
+            customerFromDb = _dbContext.Customers.Where(c => c.EmailAddress == email).FirstOrDefault();
 
             gameFromDb.InStock -= 1;
 
-            Rental rental = new Rental()
+            RentalDTO rentalDTO = new RentalDTO()
             {
-                CustomerId = customer.Id,
+                CustomerId = customerFromDb.Id,
                 GameId = gameId,
                 RentalDate = DateTime.Now,
                 RentalStatusId = 1,
                 ReturnDate = returnDate
             };
+
+            Rental rental = _mapper.Map<Rental>(rentalDTO);
 
             _dbContext.Rentals.Add(rental);
             _dbContext.SaveChanges();
@@ -88,7 +89,7 @@ namespace GamesRental.Infrastructure.Repositories
             rentalsFromDb.FirstOrDefault().RentalStatusId = 2;
             rentalsFromDb.FirstOrDefault().ReturnDate = DateTime.Now;
 
-            var gamefromDb = _dbContext.Games.Where(g=>g.Id==gameId).FirstOrDefault();
+            var gamefromDb = _dbContext.Games.Where(g => g.Id == gameId).FirstOrDefault();
 
             gamefromDb.InStock += 1;
 
