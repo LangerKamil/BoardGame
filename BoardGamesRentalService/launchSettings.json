@@ -2,20 +2,15 @@
   "profiles": {
     "Docker Compose": {
       "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "boardgamesrentalservice",
+      "composeLaunchUrl": "http://{ServiceIPAddress}:4200",
       "commandVersion": "1.0",
       "serviceActions": {
-        "angular-docker": "StartWithoutDebugging",
-        "boardgamesrentalservice": "StartWithoutDebugging",
+        "web": "StartWithoutDebugging",
+        "boardgamesrentalservice": "StartDebugging",
         "sql-server": "StartWithoutDebugging"
-      },
-      "environmentVariables": {
-        "ASPNETCORE_URLS": "https://+:443;http://+:80",
-        "ASPNETCORE_HTTPS_PORT": "44360",
-        "HTTPS_PORT": "44360"
-      },
-      "httpPort": 4200,
-      "useSSL": true,
-      "sslPort": 44360
+      }
     }
   }
 }

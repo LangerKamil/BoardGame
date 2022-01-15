@@ -1,0 +1,35 @@
+services:
+  angular-docker:
+    build:
+      context: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      dockerfile: GamesRental.View/Dockerfile
+    ports:
+    - published: 4200
+      target: 443
+  boardgamesrentalservice:
+    build:
+      context: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      dockerfile: BoardGamesRentalService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '4200'
+      ASPNETCORE_URLS: https://+:443;http://+:80
+    expose:
+    - '443'
+    image: boardgamesrentalservice
+    ports:
+    - target: 80
+    - target: 443
+    - published: 4200
+      target: 443
+    volumes:
+    - C:\Users\Env3lope\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Env3lope\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+  sql-server:
+    environment:
+      ACCEPT_EULA: '"Y"'
+    image: mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
+    ports:
+    - published: 1433
+      target: 1433
+version: '3.4'

@@ -1,0 +1,59 @@
+services:
+  angular-docker:
+    build:
+      context: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      dockerfile: GamesRental.View/Dockerfile
+    ports:
+    - published: 4200
+      target: 4200
+  boardgamesrentalservice:
+    build:
+      context: C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService
+      dockerfile: BoardGamesRentalService/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: BoardGamesRentalService
+      target: base
+    container_name: BoardGamesRentalService_1
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTPS_PORT: '443'
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      ASPNETCORE_URLS: https://+:443;http://+:80
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
+    expose:
+    - '443'
+    image: boardgamesrentalservice:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages --additionalProbingPath
+        /root/.nuget/fallbackpackages2  "/app/bin/Debug/net5.0/BoardGamesRentalService.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    - published: 4200
+      target: 443
+    - target: 443
+    tty: true
+    volumes:
+    - C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService:/app:rw
+    - C:\Users\Env3lope\vsdbg\vs2017u5:/remote_debugger:rw
+    - C:\Users\Env3lope\AppData\Roaming\ASP.NET\Https:/root/.aspnet/https:ro
+    - C:\Users\Env3lope\AppData\Roaming\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+    - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages2:ro
+    - C:\Users\Env3lope\.nuget\packages:/root/.nuget/packages:ro
+    - C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService:/src:rw
+  sql-server:
+    environment:
+      ACCEPT_EULA: '"Y"'
+    image: mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
+    ports:
+    - published: 1433
+      target: 1433
+version: '3.4'

@@ -2,12 +2,12 @@ version: '3.4'
 
 services:
   boardgamesrentalservice:
-    image: ${DOCKER_REGISTRY-}boardgamesrentalservice
+    image: klanger89/boardgamesrentalservice
     build:
       context: .
       dockerfile: BoardGamesRentalService/Dockerfile
     ports:
-            - 80
+
             - 443
             - 44360:443
     expose:
@@ -18,24 +18,16 @@ services:
       - ASPNETCORE_HTTPS_PORT=44360
     
   web:
-    #container_name: angular-docker-container
     build: 
       context: .
       dockerfile: GamesRental.View/Dockerfile
-      
+    image:  klanger89/web:latest
     ports:
-            - "4200:4200"
-            #- "4200:443"
+            - "80:4200"
   sql-server:
     image: mcr.microsoft.com/mssql/server:2019-CU13-ubuntu-20.04
     environment:
-    #- SA_PASSWORD=Pass@word
     - ACCEPT_EULA="Y"
     ports:
     - "1433:1433"
-    #depends_on: 
-    #  - migrations
-  #migrations:
-  #  build: 
-  #    context: .
-  #    dockerfile: BoardGamesRentalService/InfrastructureDocker/Dockerfile
+

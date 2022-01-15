@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   boardgamesrentalservice:
-    image: boardgamesrentalservice:dev
+    image: klanger89/boardgamesrentalservice:dev
     container_name: BoardGamesRentalService_1
     build:
       target: base
@@ -15,7 +15,7 @@ services:
       - NUGET_FALLBACK_PACKAGES=/root/.nuget/fallbackpackages;/root/.nuget/fallbackpackages2
     volumes:
       - C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\BoardGamesRentalService:/app
-      - C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService\.:/src
+      - C:\Users\Env3lope\source\repos\BoardGame\BoardGamesRentalService:/src
       - C:\Users\Env3lope\vsdbg\vs2017u5:/remote_debugger:rw
       - C:\Users\Env3lope\.nuget\packages\:/root/.nuget/packages:ro
       - C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages:/root/.nuget/fallbackpackages:ro

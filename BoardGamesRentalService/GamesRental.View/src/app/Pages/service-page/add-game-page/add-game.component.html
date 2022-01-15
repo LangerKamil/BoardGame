@@ -33,6 +33,7 @@
               type="number"
               [(ngModel)]="game.inStock"
               [ngModelOptions]="{ standalone: true }"
+              min="0"
             />
           </mat-form-field>
 
@@ -43,6 +44,7 @@
               type="number"
               [(ngModel)]="game.price"
               [ngModelOptions]="{ standalone: true }"
+              min="0"
             />
           </mat-form-field>
           <div>
